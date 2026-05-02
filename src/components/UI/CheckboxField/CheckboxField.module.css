@@ -1,0 +1,79 @@
+/* ============================================================
+   Composant CheckboxField
+   ============================================================ */
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    border: 1px solid var(--color-border-strong);
+    background-color: var(--color-surface);
+    cursor: pointer;
+    transition: var(--transition-base);
+    display: grid;
+    place-content: center;
+    color: var(--white); /* Couleur du chevron (checkmark) */
+}
+
+/* Forme arrondie (définie par les tokens) */
+.checkbox {
+    border-radius: var(--radius-md);
+}
+
+/* Tailles */
+.sm {
+    width: 16px;
+    height: 16px;
+    border-radius: var(--radius-sm);
+}
+
+.md {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-md);
+}
+
+.lg {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-lg);
+}
+
+/* État actif (Checked) */
+.checkbox:checked {
+    background-color: var(--color-brand);
+    border-color: var(--color-brand);
+}
+
+/* Icône de coche (checkmark) */
+.checkbox::before {
+    content: "";
+    width: 8px;
+    height: 4px;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg) translate(1px, -1px);
+    display: none;
+}
+
+.checkbox:checked::before {
+    display: block;
+}
+
+/* Focus de la case à cocher */
+.checkbox:focus-visible {
+    box-shadow: var(--focus-ring);
+    border-color: var(--color-brand);
+}
+
+.label {
+    font-size: var(--fs-xs);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+}

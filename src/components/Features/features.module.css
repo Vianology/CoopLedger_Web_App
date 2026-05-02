@@ -1,0 +1,329 @@
+/* ============================================================
+   Composant Features (Bento Grid)
+   Structure PRO et Full Responsive
+   ============================================================ */
+
+.wrapper {
+    background-color: var(--color-bg);
+    padding-block: var(--section-py);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+}
+
+.header {
+    text-align: left;
+    max-width: var(--container-narrow);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h2);
+    color: var(--color-text-primary);
+    line-height: var(--lh-tight);
+}
+
+.subtitle {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-p);
+    line-height: var(--lh-relaxed);
+}
+
+/* --------------------------------------------------------
+   LAYOUT GRILLE BENTO (Desktop)
+-------------------------------------------------------- */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--grid-gap-md);
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(12, 1fr);
+        grid-auto-rows: minmax(220px, auto);
+    }
+
+    .cardGreen { grid-column: span 7; }
+    .cardBlue  { grid-column: span 5; }
+    .cardBeige { grid-column: span 4; }
+    .cardWhite { grid-column: span 8; }
+}
+
+/* --------------------------------------------------------
+   STYLE DE BASE DES CARTES
+-------------------------------------------------------- */
+.card {
+    background-color: var(--color-surface);
+    border-radius: var(--card-radius);
+    padding: var(--card-padding-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    border: var(--card-border);
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-transform), var(--transition-shadow);
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+/* En-tête interne des cartes (icône + titre) */
+.cardHeader {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: flex-start;
+}
+
+/* --------------------------------------------------------
+   VARIATIONS SPÉCIFIQUES DES CARTES
+-------------------------------------------------------- */
+
+/* --- Carte Verte (Transactions) --- */
+.cardGreen {
+    background: linear-gradient(135deg, var(--green-900) 0%, #081d15 100%);
+    border: none;
+    color: var(--white);
+}
+
+.iconWrapper {
+    color: var(--green-300);
+    background-color: var(--green-800);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardTitle {
+    font-family: var(--font-serif);
+    font-size: var(--fs-2xl);
+    color: inherit;
+    margin: 0;
+}
+
+.cardText {
+    color: var(--green-100);
+    line-height: var(--lh-relaxed);
+    font-size: var(--fs-lg);
+}
+
+/* ========================================================
+   CARTE BLEUE (VOTES)
+======================================================== */
+.cardBlue {
+    background-color: #7cc6fe;
+    color: #032b43;
+    border: none;
+    justify-content: space-between;
+    padding: var(--card-padding-md);
+}
+
+/* En-tête icône + titre (même pattern que cardGreen) */
+.cardHeaderBlue {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: flex-start;
+}
+
+/* Icône bleue : fond foncé, icône claire */
+.iconWrapperBlue {
+    color: #7cc6fe;
+    background-color: #032b43;
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.voteMainTitle {
+    font-family: var(--font-serif);
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    color: #032b43;
+    margin: 0;
+}
+
+.voteResults {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+}
+
+.voteRow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    width: 100%;
+}
+
+.voteLabel {
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-xl);
+    color: #032b43;
+    width: 40px;
+}
+
+.voteBarContainer {
+    flex: 1;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.voteBarFill {
+    height: 100%;
+    background-color: #032b43;
+    border-radius: var(--radius-full);
+}
+
+.votePercentage {
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-base);
+    color: #032b43;
+    width: 45px;
+    text-align: right;
+}
+
+.voteCaption {
+    font-size: var(--fs-lg);
+    color: rgba(3, 43, 67, 0.8);
+    line-height: var(--lh-snug);
+    margin-top: auto;
+}
+
+/* --- Carte Beige (QR Code) --- */
+.cardBeige {
+    background-color: var(--beige-800);
+    color: var(--white);
+    border: none;
+}
+
+.iconWrapperBeige {
+    color: var(--beige-300);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    background-color: var(--beige-900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardTitleBeige {
+    font-family: var(--font-serif);
+    font-size: var(--fs-2xl);
+    color: var(--white);
+}
+
+.cardTextBeige {
+    line-height: var(--lh-relaxed);
+    color: var(--beige-100);
+    font-size: var(--fs-lg);
+}
+
+/* ========================================================
+   CARTE BLANCHE (COLLECTIF)
+======================================================== */
+.cardWhite {
+    padding: 0;
+    flex-direction: row;
+}
+
+.cardSplit {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.splitContent {
+    flex: 1.2;
+    padding: var(--card-padding-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-4);
+}
+
+/* En-tête icône + titre dans la zone texte */
+.cardHeaderWhite {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: flex-start;
+}
+
+/* Icône blanche : fond texte primaire, icône surface claire */
+.iconWrapperWhite {
+    color: var(--color-surface);
+    background-color: var(--color-text-primary);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardTitleWhite {
+    font-family: var(--font-serif);
+    font-size: var(--fs-2xl);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.cardTextWhite {
+    color: var(--color-text-secondary);
+    line-height: var(--lh-relaxed);
+    font-size: var(--fs-lg);
+}
+
+.splitImage {
+    flex: 1;
+    min-height: 280px;
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --------------------------------------------------------
+   RESPONSIVE (Ajustements Mobile)
+-------------------------------------------------------- */
+@media (max-width: 1023px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cardWhite {
+        flex-direction: column;
+    }
+    
+    .cardSplit {
+        flex-direction: column-reverse;
+    }
+
+    .splitImage {
+        min-height: 200px;
+    }
+}

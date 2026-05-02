@@ -1,0 +1,131 @@
+/* ============================================================
+   Composant Footer
+   Structure — Design System (Responsive & Accessible)
+   ============================================================ */
+
+.wrapper {
+    background-color: var(--color-surface);
+    border-top: var(--card-border);
+    padding-block: var(--section-py);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+}
+
+.mainSection {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: var(--space-10);
+    align-items: flex-start;
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.logoAndName {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.logo {
+    height: 36px;
+    width: auto;
+}
+
+.brandName {
+    font-family: var(--font-serif);
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-text-primary);
+}
+
+.description {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-md);
+    line-height: var(--lh-relaxed);
+    max-width: 380px;
+}
+
+.linksGroup {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+}
+
+.linkColumn {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.columnTitle {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+    font-family: var(--font-sans);
+}
+
+.link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: var(--fs-sm);
+    transition: color var(--transition-fast);
+}
+
+.link:hover {
+    color: var(--color-primary);
+}
+
+.address {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.contactText {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-sm);
+}
+
+.bottomBar {
+    border-top: 1px solid var(--off-white-3);
+    padding-top: var(--space-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-sm);
+}
+
+/* --------------------------------------------------------
+   RESPONSIVE (Mobile)
+-------------------------------------------------------- */
+@media (max-width: 1023px) {
+    .mainSection {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+    }
+    
+    .linksGroup {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    .bottomBar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-4);
+    }
+}

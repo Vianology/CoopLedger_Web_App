@@ -1,0 +1,154 @@
+/* ============================================================
+   Composant Login (Layout Dynamique Responsive)
+   ============================================================ */
+
+.wrapper {
+    min-height: calc(100vh - var(--navbar-height, 68px));
+    width: 100%;
+    background-color: var(--color-bg);
+    display: flex;
+    align-items: stretch;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+/* --------------------------------------------------------
+   COLONNE GAUCHE (BRANDING SIDE)
+-------------------------------------------------------- */
+.brandSide {
+    flex: 1;
+    background-color: var(--black);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--white);
+}
+
+.brandContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 480px;
+}
+
+.brandLogo {
+    font-family: var(--font-serif);
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.brandText {
+    padding-top: var(--space-12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.backLink {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+    font-size: var(--fs-sm);
+    transition: opacity var(--transition-fast);
+}
+
+.backLink:hover {
+    opacity: 0.8;
+}
+
+/* --------------------------------------------------------
+   COLONNE DROITE (FORM SIDE)
+-------------------------------------------------------- */
+.formSide {
+    flex: 1.2;
+    background-color: var(--color-bg);
+    padding: var(--space-8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formSide > div {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.formOptions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--gray-500);
+    font-size: var(--fs-xs);
+    margin: var(--space-2) 0;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid var(--gray-300);
+}
+
+.divider::before {
+    margin-right: var(--space-3);
+}
+
+.divider::after {
+    margin-left: var(--space-3);
+}
+
+/* --------------------------------------------------------
+   RESPONSIVE
+-------------------------------------------------------- */
+@media (max-width: 1024px) {
+    .brandSide {
+        display: none; /* Masque la colonne image/marque sur tablettes et mobiles */
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .formSide {
+        min-height: calc(100vh - var(--navbar-height, 68px));
+        padding: var(--space-6) var(--space-4);
+    }
+}

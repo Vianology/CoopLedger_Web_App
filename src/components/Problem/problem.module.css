@@ -1,0 +1,209 @@
+/* ============================================================
+   Composant Probleme — Styles Spécifiques
+   ============================================================ */
+
+.problemSection {
+    /* Espacement vertical fluide en utilisant le token de section */
+    padding-block: var(--section-py);
+    
+    /* Layout de base : Grid pour le responsive facile */
+    display: grid;
+    grid-template-columns: 1fr; /* Par défaut une seule colonne (mobile) */
+    gap: var(--space-12); /* Espace entre les deux colonnes principales */
+    align-items: center; /* Centrage vertical des deux colonnes */
+}
+
+/* Changement de layout pour les écrans larges (Laptop/Desktop) */
+@media (min-width: 1024px) {
+    .problemSection {
+        grid-template-columns: 1fr 1fr; /* Deux colonnes égales */
+    }
+}
+
+/* --------------------------------------------------------
+   Colonne de Gauche — Texte
+-------------------------------------------------------- */
+
+.textContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.overtitle {
+    color: var(--green-700); /* Couleur verte accentuée */
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-widest);
+    text-transform: uppercase;
+}
+
+.mainTitle {
+    /* La police Serif (Libre Baskerville) est héritée par h2 dans globals.css */
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-8);
+    /* Balance du texte pour éviter une seule mot sur la ligne du bas */
+    text-wrap: var(--text-balance); 
+}
+
+.painPointsList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10); /* Espace généreux entre les points */
+}
+
+.painPointItem {
+    display: flex;
+    gap: var(--space-6);
+    align-items: flex-start;
+}
+
+.iconWrapper {
+    flex-shrink: 0; /* Empêche l'icône de rétrécir */
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    /* Fond subtil rouge en utilisant la couleur sémantique 'danger-subtle' de globals.css */
+    background-color: var(--color-danger-subtle);
+    display: grid;
+    place-items: center; /* Centrage parfait de l'icône */
+}
+
+.painIcon {
+    width: 24px;
+    height: 24px;
+    /* Couleur de l'icône rouge 'danger' */
+    color: var(--color-danger);
+}
+
+.painText {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.painTitle {
+    /* La police Sans et le poids sont hérités par h3 dans globals.css */
+    color: var(--color-text-primary);
+    font-size: var(--fs-md);
+}
+
+.painDescription {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-p);
+    max-width: 480px; /* Limite la largeur pour une meilleure lisibilité */
+}
+
+/* --------------------------------------------------------
+   Colonne de Droite — Carte Statistique
+-------------------------------------------------------- */
+
+.visualContent {
+    width: 100%;
+    display: grid;
+    place-items: center; /* Centre la carte sur mobile si elle n'est pas pleine largeur */
+}
+
+.statCard {
+    /* Apparence basée sur les tokens de carte */
+    background-color: var(--color-surface);
+    border-radius: var(--radius-card); /* var(--radius-xl) */
+    box-shadow: var(--card-shadow); /* var(--shadow-md) */
+    border: var(--card-border);
+    
+    width: 100%;
+    max-width: 540px; /* Taille max comme sur l'image */
+    
+    /* Padding fluide : plus petit sur mobile, plus grand sur desktop, sans rupture */
+    padding: clamp(var(--space-6), 5vw, var(--card-padding-md));
+    
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    
+    position: relative; /* Pour l'indicateur rouge absolu */
+    overflow: hidden; /* Pour contenir l'indicateur si nécessaire */
+}
+
+.statHeader {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.statNumber {
+    font-family: var(--font-sans);
+    font-size: clamp(2.5rem, 6vw, 3rem); /* fs-5xl fluide */
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-none);
+    /* La couleur est définie inline via style={{color: 'var(--color-danger)'}} */
+}
+
+.statLabel {
+    color: var(--color-text-muted);
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+}
+
+/* Visualisation des barres */
+.barChartVisual {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+}
+
+.bar {
+    height: 10px;
+    border-radius: var(--radius-full);
+    background-color: var(--off-white-3); /* Couleur de fond des barres (non remplies) */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Pseudo-éléments pour simuler le remplissage gris */
+.bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: var(--radius-full);
+    background-color: var(--gray-500); /* Couleur des données */
+}
+
+/* Largeurs proportionnelles comme sur l'image */
+.bar1::after { width: 80%; }
+.bar2::after { width: 65%; }
+.bar3::after { width: 90%; }
+
+.visualLegend {
+    color: var(--color-text-muted);
+    font-size: var(--fs-lg);
+    font-style: italic; /* Style italique comme demandé */
+    max-width: 400px;
+    line-height: var(--lh-relaxed);
+}
+
+/* Indicateur vertical rouge sur le côté droit */
+.dangerIndicator {
+    position: absolute;
+    right: 20px; /* Ajustez selon l'image */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: clamp(60px, 15vw, 100px); /* Hauteur fluide */
+    border-radius: var(--radius-full);
+    background-color: var(--color-danger);
+    /* Petite opacité de fond pour l'effet de barre comme sur l'image */
+    box-shadow: inset 0 0 0 2px var(--red-100); 
+}
+
+/* Ajustement subtil de l'indicateur sur petit mobile pour ne pas gêner le texte */
+@media (max-width: 480px) {
+    .dangerIndicator {
+        display: none; /* Cache l'indicateur sur très petit écran pour la lisibilité */
+    }
+}

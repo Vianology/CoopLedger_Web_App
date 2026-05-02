@@ -1,0 +1,85 @@
+.sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background-color: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-6) var(--space-4);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-10);
+}
+
+.brandName {
+    font-family: var(--font-serif);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    color: var(--color-text-primary);
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    flex: 1;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+.link:hover {
+    background-color: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+}
+
+.active {
+    background-color: var(--color-brand-subtle);
+    color: var(--color-brand);
+    font-weight: var(--fw-semibold);
+}
+
+.footer {
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+}
+
+.logoutBtn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    border: none;
+    background: transparent;
+    color: var(--color-error);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.logoutBtn:hover {
+    background-color: rgba(239, 68, 68, 0.08);
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        display: none; /* Remplacer par un menu burger sur mobile */
+    }
+}

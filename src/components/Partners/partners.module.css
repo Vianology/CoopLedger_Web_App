@@ -1,0 +1,113 @@
+/* ============================================================
+   Composant Partners (Partenaires)
+   Structure — Design System (Responsive & Accessible)
+   ============================================================ */
+
+.wrapper {
+    background-color: var(--color-bg);
+    padding-block: var(--section-py);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10);
+}
+
+.header {
+    text-align: center;
+    max-width: var(--container-narrow);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h2);
+    color: var(--color-text-primary);
+}
+
+.subtitle {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-md);
+    line-height: var(--lh-relaxed);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-6);
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+}
+
+.card {
+    background-color: var(--color-surface);
+    border: var(--card-border);
+    border-radius: var(--card-radius);
+    padding: var(--card-padding-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-5);
+    height: 135px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-transform), var(--transition-shadow), border-color var(--transition-fast);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+}
+
+/* Logos : Effet sobre d'opacité qui fonctionne sur fond sombre et clair */
+.logo {
+    height: 46px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.45; /* Plus ou moins visible selon le thème */
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.card:hover .logo {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+.name {
+    font-family: var(--font-sans);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    color: var(--color-text-secondary);
+    text-align: center;
+    transition: color var(--transition-fast);
+}
+
+.card:hover .name {
+    color: var(--color-text-primary);
+}
+
+/* --------------------------------------------------------
+   RESPONSIVE (Mobile)
+-------------------------------------------------------- */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+    }
+    
+    .card {
+        height: 115px;
+        padding: var(--card-padding-md);
+        gap: var(--space-4);
+    }
+
+    .logo {
+        height: 36px;
+    }
+}
