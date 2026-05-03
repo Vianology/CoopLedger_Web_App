@@ -85,7 +85,7 @@ function Navbar({ logo, brandName, navLinks = [], actionIcons = [] }) {
                             S'inscrire
                         </Button>
                         <Button
-                            variant="ghost"
+                            variant="outline"
                             size="sm"
                             onClick={() => navigate('/login')}
                         >
