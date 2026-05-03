@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Sun, Moon } from 'lucide-react';
 import styles from './navbar.module.css';
+import Button from '../UI/Button/Button';
 
 function Navbar({ logo, brandName, navLinks = [], actionIcons = [] }) {
     const [theme, setTheme] = useState(() => {
@@ -9,6 +10,7 @@ function Navbar({ logo, brandName, navLinks = [], actionIcons = [] }) {
     });
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
@@ -73,6 +75,24 @@ function Navbar({ logo, brandName, navLinks = [], actionIcons = [] }) {
                         );
                     })}
 
+                    {/* Boutons Auth — desktop uniquement */}
+                    <div className={styles.auth_buttons}>
+                        <Button
+                            variant="primary"
+                            size="sm"
+                            onClick={() => navigate('/register')}
+                        >
+                            S'inscrire
+                        </Button>
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => navigate('/login')}
+                        >
+                            Se connecter
+                        </Button>
+                    </div>
+
                     {/* Toggle dark/light */}
                     <button
                         onClick={toggleTheme}
@@ -116,6 +136,26 @@ function Navbar({ logo, brandName, navLinks = [], actionIcons = [] }) {
                         </li>
                     ))}
                 </ul>
+
+                {/* Boutons Auth — mobile */}
+                <div className={styles.mobile_auth}>
+                    <Button
+                        variant="ghost"
+                        size="md"
+                        className={styles.mobile_auth_btn}
+                        onClick={() => { navigate('/login'); setMenuOpen(false); }}
+                    >
+                        Se connecter
+                    </Button>
+                    <Button
+                        variant="primary"
+                        size="md"
+                        className={styles.mobile_auth_btn}
+                        onClick={() => { navigate('/register'); setMenuOpen(false); }}
+                    >
+                        S'inscrire
+                    </Button>
+                </div>
             </div>
         </header>
     );

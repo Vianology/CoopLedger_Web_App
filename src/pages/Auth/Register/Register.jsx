@@ -6,9 +6,16 @@ import CheckboxField from '../../../components/UI/CheckboxField/CheckboxField';
 import SocialButton from '../../../components/UI/SocialButton/SocialButton';
 import Button from '../../../components/UI/Button/Button';
 import styles from './register.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-    // Exemple d'icône SVG Google pour le SocialButton
+
+    const navigate = useNavigate()
+
+    const handleDashboardRedirect = () => {
+        navigate('/dashboard');
+    };
+    //SVG Google pour le SocialButton
     const GoogleIcon = () => (
         <svg width="18" height="18" viewBox="0 0 18 18">
             <path d="M17.64 9.2c0-.64-.06-1.25-.18-1.8H9v3.41h4.84c-.21 1.15-.86 2.12-1.78 2.78v2.16h2.86c1.68-1.55 2.65-3.83 2.65-6.55z" fill="#4285F4" />
@@ -141,7 +148,7 @@ const Register = () => {
                                 <Button 
                                     variant="primary" 
                                     size="lg"  
-                                    onClick={() => {}}
+                                    onClick={handleDashboardRedirect}
                                 >
                                     S'inscrire
                                 </Button>
