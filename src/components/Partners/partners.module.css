@@ -1,112 +1,135 @@
-/* ============================================================
-   Composant Partners (Partenaires)
-   Structure — Design System (Responsive & Accessible)
-   ============================================================ */
+/* ============================
+   PARTNERS — partners.module.css
+   ============================ */
 
 .wrapper {
-    background-color: var(--color-bg);
+    background: var(--color-bg);
     padding-block: var(--section-py);
 }
 
-.container {
+.inner {
     display: flex;
     flex-direction: column;
     gap: var(--space-10);
 }
 
+/* ---- Header ---- */
 .header {
-    text-align: center;
-    max-width: var(--container-narrow);
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: var(--space-3);
+    gap: var(--space-4);
+    max-width: 680px;
+}
+
+.overline {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-widest);
+    text-transform: uppercase;
+    color: var(--color-brand-text);
 }
 
 .title {
     font-family: var(--font-serif);
     font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
     color: var(--color-text-primary);
+    margin: 0;
 }
 
 .subtitle {
+    font-size: var(--fs-lg);
     color: var(--color-text-secondary);
-    font-size: var(--fs-md);
     line-height: var(--lh-relaxed);
+    margin: 0;
 }
 
+/* ---- Grille ---- */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-6);
-    align-items: stretch;
-    justify-content: center;
-    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
 }
 
 .card {
-    background-color: var(--color-surface);
-    border: var(--card-border);
-    border-radius: var(--card-radius);
-    padding: var(--card-padding-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8) var(--space-6);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: var(--space-5);
-    height: 135px;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition-transform), var(--transition-shadow), border-color var(--transition-fast);
+    transition: border-color var(--duration-normal) var(--ease-in-out),
+                box-shadow var(--duration-normal) var(--ease-in-out),
+                transform var(--duration-moderate) var(--ease-spring);
 }
 
 .card:hover {
-    transform: translateY(-4px);
+    border-color: var(--color-brand);
     box-shadow: var(--shadow-md);
-    border-color: var(--color-primary);
+    transform: translateY(-3px);
 }
 
-/* Logos : Effet sobre d'opacité qui fonctionne sur fond sombre et clair */
 .logo {
-    height: 46px;
+    height: 48px;
     width: auto;
     object-fit: contain;
-    opacity: 0.45; /* Plus ou moins visible selon le thème */
-    transition: opacity var(--transition-fast), transform var(--transition-fast);
+    opacity: 0.5;
+    transition: opacity var(--duration-normal) var(--ease-in-out);
 }
 
 .card:hover .logo {
     opacity: 1;
-    transform: scale(1.03);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
 }
 
 .name {
-    font-family: var(--font-sans);
-    font-size: var(--fs-sm);
+    font-size: var(--fs-lg);
     font-weight: var(--fw-semibold);
-    color: var(--color-text-secondary);
-    text-align: center;
-    transition: color var(--transition-fast);
-}
-
-.card:hover .name {
     color: var(--color-text-primary);
+    text-align: center;
 }
 
-/* --------------------------------------------------------
-   RESPONSIVE (Mobile)
--------------------------------------------------------- */
+.role {
+    font-size: var(--fs-md);
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
 @media (max-width: 768px) {
     .grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: var(--space-4);
     }
     
     .card {
-        height: 115px;
-        padding: var(--card-padding-md);
-        gap: var(--space-4);
+        flex-direction: row;
+        padding: var(--space-5) var(--space-6);
     }
-
+    
+    .info {
+        align-items: flex-start;
+    }
+    
+    .name,
+    .role {
+        text-align: left;
+    }
+    
     .logo {
         height: 36px;
     }

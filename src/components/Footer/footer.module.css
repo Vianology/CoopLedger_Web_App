@@ -1,87 +1,89 @@
-/* ============================================================
-   Composant Footer
-   Structure — Design System (Responsive & Accessible)
-   ============================================================ */
+/* ============================
+   FOOTER — footer.module.css
+   ============================ */
 
 .wrapper {
-    background-color: var(--color-surface);
-    border-top: var(--card-border);
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
     padding-block: var(--section-py);
 }
 
-.container {
+.inner {
     display: flex;
     flex-direction: column;
     gap: var(--space-12);
 }
 
-.mainSection {
+.main {
     display: grid;
-    grid-template-columns: 1.2fr 2fr;
-    gap: var(--space-10);
+    grid-template-columns: 1.4fr 2fr;
+    gap: var(--space-12);
     align-items: flex-start;
 }
 
+/* ---- Marque ---- */
 .brand {
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
 }
 
-.logoAndName {
+.brand_top {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
+    gap: var(--space-3);
 }
 
 .logo {
-    height: 36px;
+    height: 75px;
     width: auto;
 }
 
-.brandName {
+.brand_name {
     font-family: var(--font-serif);
-    font-size: var(--fs-xl);
+    font-size: var(--fs-2xl);
     font-weight: var(--fw-bold);
-    color: var(--color-text-primary);
+    color: var(--color-brand);
 }
 
-.description {
+.tagline {
+    font-size: var(--fs-lg);
     color: var(--color-text-secondary);
-    font-size: var(--fs-md);
     line-height: var(--lh-relaxed);
-    max-width: 380px;
+    max-width: 320px;
+    margin: 0;
 }
 
-.linksGroup {
+/* ---- Liens ---- */
+.links_grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-8);
 }
 
-.linkColumn {
+.col {
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
 }
 
-.columnTitle {
-    font-size: var(--fs-md);
+.col_title {
+    font-size: var(--fs-lg);
     font-weight: var(--fw-semibold);
     color: var(--color-text-primary);
-    margin-bottom: var(--space-1);
     font-family: var(--font-sans);
+    margin-bottom: var(--space-1);
 }
 
 .link {
-    color: var(--color-text-secondary);
+    font-size: var(--fs-md);
+    color: var(--color-text-muted);
     text-decoration: none;
-    font-size: var(--fs-sm);
-    transition: color var(--transition-fast);
+    transition: color var(--duration-normal) var(--ease-in-out);
 }
 
 .link:hover {
-    color: var(--color-primary);
+    color: var(--color-brand);
 }
 
 .address {
@@ -91,41 +93,54 @@
     gap: var(--space-2);
 }
 
-.contactText {
-    color: var(--color-text-secondary);
-    font-size: var(--fs-sm);
+.address span {
+    font-size: var(--fs-md);
+    color: var(--color-text-muted);
 }
 
-.bottomBar {
-    border-top: 1px solid var(--off-white-3);
+/* ---- Barre inférieure ---- */
+.bottom_bar {
+    border-top: 1px solid var(--color-border);
     padding-top: var(--space-6);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--space-4);
 }
 
 .copyright {
-    color: var(--color-text-secondary);
-    font-size: var(--fs-sm);
+    font-size: var(--fs-lg);
+    color: var(--color-text-muted);
+    margin: 0;
 }
 
-/* --------------------------------------------------------
-   RESPONSIVE (Mobile)
--------------------------------------------------------- */
+.tech_note {
+    font-size: var(--fs-md);
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
 @media (max-width: 1023px) {
-    .mainSection {
+    .main {
         grid-template-columns: 1fr;
         gap: var(--space-8);
     }
-    
-    .linksGroup {
+    .links_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .links_grid {
         grid-template-columns: 1fr;
         gap: var(--space-6);
     }
-
-    .bottomBar {
+    .bottom_bar {
         flex-direction: column;
         align-items: flex-start;
-        gap: var(--space-4);
     }
 }

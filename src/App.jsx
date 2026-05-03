@@ -23,9 +23,9 @@ function AppContent() {
     
     const Links = [
         { label: "Accueil", href: "/" },
-        { label: "Livre", href: "/livre" },
-/*         { label: "Vote", href: "/vote" }, */
-        { label: "Profil", href: "/profile" }
+        { label: "Transactions", href: "/2" },
+        { label: "Votes", href: "/3" },
+        { label: "Coopératives", href: "/4" }
     ];
 
     const Icons = [];

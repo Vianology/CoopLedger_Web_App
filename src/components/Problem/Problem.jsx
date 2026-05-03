@@ -1,48 +1,55 @@
 import React from 'react';
-import styles from './problem.module.css'; // Import des styles modulaires
-import { EyeOff, AlertTriangle } from 'lucide-react'; // Utilisation de Lucide comme dans votre App.js
+import styles from './problem.module.css';
+import { EyeOff, XCircle, AlertTriangle } from 'lucide-react';
+
+const painPoints = [
+    {
+        icon: EyeOff,
+        label: 'Opacité financière',
+        description:
+            'Les recettes et dépenses ne sont jamais communiquées aux membres. Aucun agriculteur ne peut vérifier comment ses fonds sont utilisés ni contester une décision.',
+    },
+    {
+        icon: XCircle,
+        label: 'Décisions sans consultation',
+        description:
+            'Le président ou le trésorier décide seul. Le principe fondateur "un membre, une voix" reste lettre morte faute de mécanisme de vote traçable.',
+    },
+    {
+        icon: AlertTriangle,
+        label: 'Exclusion du crédit bancaire',
+        description:
+            "L'APBEF Togo le documente : les banques refusent de financer les coopératives précisément parce qu'elles ne peuvent pas retracer l'utilisation des fonds.",
+    },
+];
 
 const Problem = () => {
-    // Données des points de douleur pour une structure itérative propre
-    const painPoints = [
-        {
-            icon: EyeOff,
-            title: "Manque de Traçabilité",
-            description: "Les flux financiers traditionnels sont souvent perdus dans des registres papier obsolètes."
-        },
-        {
-            icon: AlertTriangle,
-            title: "Conflits de Gouvernance",
-            description: "Des décisions arbitraires sans consensus clair des membres de la coopérative."
-        }
-    ];
-
     return (
-        // Utilisation de la classe utilitaire globale .container pour le centrage et le padding latéral
-        <section id="problem" className={`${styles.problemSection} container`}>
-            
-            {/* Colonne de Gauche : Texte et Points */}
-            <div className={styles.textContent}>
-                <span className={styles.overtitle}>LE CONSTAT</span>
-                
-                {/* H2 avec police Serif selon globals.css */}
-                <h2 className={styles.mainTitle}>
-                    L'opacité freine<br/> votre croissance
+        <section id="probleme" className={`${styles.section} container`}>
+
+            <div className={styles.left}>
+                <span className={styles.overline}>Le constat</span>
+                <h2 className={styles.title}>
+                    L'opacité coûte cher<br />aux agriculteurs togolais
                 </h2>
-                
-                {/* Liste des points de douleur */}
-                <div className={styles.painPointsList}>
-                    {painPoints.map((point, index) => {
-                        const IconComponent = point.icon;
+                <p className={styles.intro}>
+                    Entre 2011 et 2017, l'agriculture togolaise — qui représente 40&nbsp;% du PIB 
+                    et emploie 65&nbsp;% de la population active — n'a reçu que{' '}
+                    <strong>0,2&nbsp;%</strong> des crédits bancaires. Raison documentée par le 
+                    Ministère de l'Économie : l'impossibilité de retracer la gestion des fonds des coopératives.
+                </p>
+
+                <div className={styles.pain_list}>
+                    {painPoints.map((point, i) => {
+                        const Icon = point.icon;
                         return (
-                            <div key={index} className={styles.painPointItem}>
-                                {/* Conteneur de l'icône avec fond subtil rouge (danger) */}
-                                <div className={styles.iconWrapper}>
-                                    <IconComponent className={styles.painIcon} strokeWidth={1.5} />
+                            <div key={i} className={styles.pain_item}>
+                                <div className={styles.icon_wrap}>
+                                    <Icon size={24} strokeWidth={1.5} />
                                 </div>
-                                <div className={styles.painText}>
-                                    <h3 className={styles.painTitle}>{point.title}</h3>
-                                    <p className={styles.painDescription}>{point.description}</p>
+                                <div>
+                                    <h3 className={styles.pain_title}>{point.label}</h3>
+                                    <p className={styles.pain_desc}>{point.description}</p>
                                 </div>
                             </div>
                         );
@@ -50,34 +57,52 @@ const Problem = () => {
                 </div>
             </div>
 
-            {/* Colonne de Droite : Carte de Visualisation */}
-            <div className={styles.visualContent}>
-                {/* Utilisation explicite des tokens de rayon et d'ombre de carte */}
-                <div className={styles.statCard}>
-                    <div className={styles.statHeader}>
-                        {/* Utilisation directe du token de couleur sémantique --color-danger */}
-                        <div className={styles.statNumber} style={{ color: 'var(--color-danger)' }}>
-                            42%
+            <div className={styles.right}>
+                <div className={styles.data_card}>
+                    <div className={styles.card_top}>
+                        <div className={styles.big_number}>0,2&nbsp;%</div>
+                        <p className={styles.number_label}>des crédits bancaires togolais accordés à l'agriculture</p>
+                        <p className={styles.number_source}>Source : Ministère de l'Économie du Togo, 2017</p>
+                    </div>
+
+                    <div className={styles.context_rows}>
+                        <div className={styles.context_row}>
+                            <span className={styles.context_label}>Agriculture / PIB national</span>
+                            <div className={styles.bar_wrap}>
+                                <div className={styles.bar}>
+                                    <div className={styles.bar_fill} style={{ width: '40%', background: 'var(--color-brand)' }} />
+                                </div>
+                                <span className={styles.bar_val}>40&nbsp;%</span>
+                            </div>
                         </div>
-                        <div className={styles.statLabel}>PERTES DE REVENUS</div>
+                        <div className={styles.context_row}>
+                            <span className={styles.context_label}>Population active employée</span>
+                            <div className={styles.bar_wrap}>
+                                <div className={styles.bar}>
+                                    <div className={styles.bar_fill} style={{ width: '65%', background: 'var(--color-brand)' }} />
+                                </div>
+                                <span className={styles.bar_val}>65&nbsp;%</span>
+                            </div>
+                        </div>
+                        <div className={styles.context_row}>
+                            <span className={styles.context_label}>Crédits bancaires reçus</span>
+                            <div className={styles.bar_wrap}>
+                                <div className={styles.bar}>
+                                    <div className={styles.bar_fill} style={{ width: '0.5%', background: 'var(--color-danger)' }} />
+                                </div>
+                                <span className={styles.bar_val} style={{ color: 'var(--color-danger)' }}>0,2&nbsp;%</span>
+                            </div>
+                        </div>
                     </div>
-                    
-                    {/* Visualisation des barres (simplifiée pour l'intégration web) */}
-                    <div className={styles.barChartVisual}>
-                        <div className={`${styles.bar} ${styles.bar1}`}></div>
-                        <div className={`${styles.bar} ${styles.bar2}`}></div>
-                        <div className={`${styles.bar} ${styles.bar3}`}></div>
-                    </div>
-                    
-                    <p className={styles.visualLegend}>
-                        Visualisation des flux de capitaux non-digitalisés dans les systèmes traditionnels.
-                    </p>
-                    
-                    {/* Indicateur visuel rouge vertical sur le côté (comme sur l'image) */}
-                    <div className={styles.dangerIndicator}></div>
+
+                    <blockquote className={styles.quote}>
+                        <AlertTriangle size={24} className={styles.quote_icon} />
+                        « Le secteur agricole est confronté à un manque d'organisation des coopératives, 
+                        réduisant les financements pouvant leur être accordés. »
+                        <cite>— République Togolaise (officiel), MIFA</cite>
+                    </blockquote>
                 </div>
             </div>
-            
         </section>
     );
 };
