@@ -1,119 +1,187 @@
 import React from 'react';
 import { 
-    Users, 
-    ShieldCheck, 
-    TrendingUp, 
+    Landmark, 
+    FileCheck, 
+    BarChart3, 
+    DollarSign, 
     ArrowUpRight, 
-    Activity, 
-    FileText 
+    Clock, 
+    Plus, 
+    Download, 
+    Search,
+    Filter,
+    ShieldCheck,
+    Building2
 } from 'lucide-react';
-import DashboardHeader from './DashboardHeader';
-import Sidebar from './Sidebar';
+import AppLayout from '../../layouts/AppLayout/AppLayout';
+import Button from '../../components/UI/Button/Button';
+import InputField from '../../components/UI/InputField/InputField';
+import SelectField from '../../components/UI/SelectField/SelectField';
 import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
     const stats = [
-        { title: "Coopérateurs Actifs", value: "42", subtext: "+4 ce mois-ci", trend: 5.2, icon: Users },
-        { title: "Certificats Émis", value: "1,204", subtext: "Total vérifiés", trend: 12.5, icon: ShieldCheck },
-        { title: "Volume / Tonnes", value: "320.5", subtext: "Total récolté", trend: -1.4, icon: TrendingUp },
-        { title: "Transactions", value: "148", subtext: "En attente: 12", icon: FileText }
-    ];
-
-    const recentTransactions = [
-        { id: "#TX-8921", coop: "Coopérative Avé", type: "Vente de Cacao", amount: "12,500,000 CFA", status: "Validé", date: "02 Mai 2026" },
-        { id: "#TX-8920", coop: "Coopérative Kpalimé", type: "Café Équitable", amount: "4,300,000 CFA", status: "En cours", date: "01 Mai 2026" },
-        { id: "#TX-8919", coop: "Coopérative Kara", type: "Soja", amount: "8,120,000 CFA", status: "Validé", date: "29 Avril 2026" }
+        { 
+            label: "Coopératives partenaires", 
+            value: "48", 
+            icon: Landmark, 
+            change: "+12% ce mois", 
+            trend: "up" 
+        },
+        { 
+            label: "Volume tracé (T)", 
+            value: "1 250", 
+            icon: FileCheck, 
+            change: "+8% ce mois", 
+            trend: "up" 
+        },
+        { 
+            label: "Rendement moyen", 
+            value: "89%", 
+            icon: BarChart3, 
+            change: "+4.5% ce mois", 
+            trend: "up" 
+        },
+        { 
+            label: "Revenus estimés", 
+            value: "45 M FCFA", 
+            icon: DollarSign, 
+            change: "+15% ce mois", 
+            trend: "up" 
+        }
     ];
 
     return (
-        <div className={styles.layout}>
-            <Sidebar />
-            <main className={styles.mainContent}>
-                <DashboardHeader 
-                    title="Tableau de bord" 
-                    subtitle="Suivez les activités et les performances de vos coopératives." 
-                />
+        <AppLayout>
+            <div className={styles.dashboardWrapper}>
+                {/* En-tête de la vue Dashboard avec Barre d'outils et Boutons */}
+                <div className={styles.toolbar}>
+                    <div className={styles.searchAndFilter}>
+                        <InputField
+                            label="Recherche"
+                            placeholder="Rechercher une coopérative, un lot..."
+                            icon={Search}
+                            type="text"
+                        />
+                        <SelectField
+                            label="Filtre"
+                            icon={Filter}
+                         
+                            options={[
+                                { value: 'all', label: 'Toutes les régions' },
+                                { value: 'ma', label: 'Région maritime' },
+                                { value: 'pt', label: 'Région des plateaux' },
+                                { value: 'ce', label: 'Région centrale' },
+                                { value: 'ka', label: 'Région de la kara' },
+                                { value: 'sa', label: 'Région des savanes' },
+                            ]}
+                        />
+                    </div>
+                    <div className={styles.actionButtons}>
+                        <Button variant="primary" icon={Plus} size="lg">
+                            Nouvelle coopérative
+                        </Button>
+                        <Button variant="outline" icon={Download} size="lg">
+                            Exporter
+                        </Button>
+                    </div>
+                </div>
 
-                {/* Section des cartes de statistiques */}
+                {/* Cartes de statistiques (KPIs) */}
                 <section className={styles.statsGrid}>
                     {stats.map((stat, index) => {
                         const Icon = stat.icon;
                         return (
                             <div key={index} className={styles.card}>
                                 <div className={styles.cardHeader}>
-                                    <span className={styles.cardTitle}>{stat.title}</span>
                                     <div className={styles.iconWrapper}>
-                                        <Icon size={18} />
+                                        <Icon size={20} />
                                     </div>
+                                    <span className={styles.changeRate}>
+                                        {stat.change}
+                                        <ArrowUpRight size={14} />
+                                    </span>
                                 </div>
                                 <div className={styles.cardBody}>
+                                    <span className={styles.cardLabel}>{stat.label}</span>
                                     <h3 className={styles.cardValue}>{stat.value}</h3>
-                                    {stat.trend && (
-                                        <span className={`${styles.trend} ${stat.trend > 0 ? styles.positive : styles.negative}`}>
-                                            <ArrowUpRight size={14} />
-                                            {stat.trend}%
-                                        </span>
-                                    )}
                                 </div>
-                                <p className={styles.cardSubtext}>{stat.subtext}</p>
                             </div>
                         );
                     })}
                 </section>
 
-                {/* Section principale : Graphique et Tableau */}
-                <div className={styles.contentGrid}>
-                    <div className={styles.cardWide}>
-                        <div className={styles.sectionHeader}>
-                            <h2 className={styles.sectionTitle}>Aperçu des Performances</h2>
-                            <p className={styles.sectionSubtitle}>Évolution des volumes de produits agricoles (T) - 2026</p>
+                {/* Section principale avec une grille déséquilibrée (60% / 40%) */}
+                <div className={styles.layoutGrid}>
+                    {/* Colonne principale : Analyse des rendements (graphiques) */}
+                    <div className={styles.panel}>
+                        <div className={styles.panelHeader}>
+                            <div>
+                                <h3 className={styles.panelTitle}>Analyse des rendements</h3>
+                                <p className={styles.panelSubtitle}>Comparatif des volumes de production par catégorie (en tonnes)</p>
+                            </div>
                         </div>
-                        <div className={styles.chartPlaceholder}>
-                            <Activity size={32} color="var(--color-brand)" />
-                            <p>Graphique des rendements (Recharts / Chart.js)</p>
+                        
+                        <div className={styles.chartContainer}>
+                            <div className={styles.chartBar} style={{ height: '65%' }}>
+                                <span className={styles.barValue}>65%</span>
+                                <span className={styles.barLabel}>Cacao</span>
+                            </div>
+                            <div className={styles.chartBar} style={{ height: '40%' }}>
+                                <span className={styles.barValue}>40%</span>
+                                <span className={styles.barLabel}>Café</span>
+                            </div>
+                            <div className={styles.chartBar} style={{ height: '85%' }}>
+                                <span className={styles.barValue}>85%</span>
+                                <span className={styles.barLabel}>Riz</span>
+                            </div>
+                            <div className={styles.chartBar} style={{ height: '55%' }}>
+                                <span className={styles.barValue}>55%</span>
+                                <span className={styles.barLabel}>Anacarde</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div className={styles.cardWide}>
-                        <div className={styles.sectionHeader}>
-                            <h2 className={styles.sectionTitle}>Transactions Récentes</h2>
-                            <p className={styles.sectionSubtitle}>Dernières opérations enregistrées sur la plateforme</p>
+                    {/* Colonne secondaire : Activités récentes */}
+                    <div className={styles.panel}>
+                        <div className={styles.panelHeader}>
+                            <h3 className={styles.panelTitle}>Activités récentes</h3>
+                            <p className={styles.panelSubtitle}>Dernières actions enregistrées</p>
                         </div>
                         
-                        <div className={styles.tableWrapper}>
-                            <table className={styles.table}>
-                                <thead>
-                                    <tr>
-                                        <th>ID Transaction</th>
-                                        <th>Coopérative</th>
-                                        <th>Produit / Type</th>
-                                        <th>Montant</th>
-                                        <th>Statut</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {recentTransactions.map((tx, index) => (
-                                        <tr key={index}>
-                                            <td>{tx.id}</td>
-                                            <td><strong>{tx.coop}</strong></td>
-                                            <td>{tx.type}</td>
-                                            <td>{tx.amount}</td>
-                                            <td>
-                                                <span className={`${styles.badge} ${tx.status === 'Validé' ? styles.badgeSuccess : styles.badgeWarning}`}>
-                                                    {tx.status}
-                                                </span>
-                                            </td>
-                                            <td>{tx.date}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
+                        <ul className={styles.activityList}>
+                            <li className={styles.activityItem}>
+                                <span className={styles.dot} />
+                                <div className={styles.activityContent}>
+                                    <p className={styles.activityText}>Enregistrement de lot - Coopérative Nyamata</p>
+                                    <span className={styles.activityTime}>
+                                        <Clock size={12} /> Il y a 20 minutes
+                                    </span>
+                                </div>
+                            </li>
+                            <li className={styles.activityItem}>
+                                <span className={styles.dot} />
+                                <div className={styles.activityContent}>
+                                    <p className={styles.activityText}>Validation du contrat de traçabilité</p>
+                                    <span className={styles.activityTime}>
+                                        <Clock size={12} /> Il y a 2 heures
+                                    </span>
+                                </div>
+                            </li>
+                            <li className={styles.activityItem}>
+                                <span className={styles.dot} />
+                                <div className={styles.activityContent}>
+                                    <p className={styles.activityText}>Nouvelle adhésion (GIZ)</p>
+                                    <span className={styles.activityTime}>
+                                        <Clock size={12} /> Il y a 5 heures
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </main>
-        </div>
+            </div>
+        </AppLayout>
     );
 };
 

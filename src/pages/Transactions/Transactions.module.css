@@ -1,0 +1,384 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    width: 100%;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    background-color: var(--color-surface);
+    padding: var(--space-4) var(--space-6);
+    border: var(--card-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.searchAndFilter {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex: 1;
+    max-width: 650px;
+}
+
+.searchContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 220px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: var(--space-3);
+    color: var(--color-text-secondary);
+}
+
+.searchInput {
+    height: 40px;
+    width: 100%;
+    padding: 0 var(--space-4) 0 36px;
+    background-color: var(--color-surface);
+    border: var(--card-border);
+    border-radius: var(--radius-full);
+    font-size: var(--fs-xs);
+    color: var(--color-text-primary);
+    transition: border-color var(--transition-fast);
+}
+
+.searchInput:focus {
+    border-color: var(--color-brand);
+    outline: none;
+    box-shadow: var(--focus-ring, 0 0 0 3px rgba(var(--color-brand-rgb), 0.15));
+}
+
+.selectInput {
+    height: 40px;
+    width: 180px;
+    padding: 0 var(--space-3);
+    background-color: var(--color-surface);
+    border: var(--card-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-size: var(--fs-sm);
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+}
+
+.selectInput:focus {
+    border-color: var(--color-brand);
+    outline: none;
+}
+
+.actionButtons {
+    display: flex;
+    gap: var(--space-3);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: 0 var(--space-5);
+    height: 40px;
+    border-radius: var(--radius-md);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-in-out);
+    text-decoration: none;
+    border: none;
+}
+
+.btnSecondary {
+    background-color: var(--color-surface);
+    border: var(--card-border);
+    color: var(--color-text-primary);
+}
+
+.btnSecondary:hover {
+    border-color: var(--color-text-secondary);
+}
+
+.tableContainer {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: var(--card-border);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+    overflow-x: auto; /* Empêche le débordement sur les petits écrans */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 900px; /* Force une taille minimale pour éviter l'écrasement des colonnes */
+    table-layout: fixed; /* Contrôle la répartition des largeurs */
+}
+
+/* Classes de gestion des colonnes */
+.colDesc {
+    width: 35%;
+    min-width: 250px;
+}
+
+.colDate {
+    width: 15%;
+    min-width: 130px;
+}
+
+.colRef {
+    width: 20%;
+    min-width: 140px;
+}
+
+.colStatus {
+    width: 15%;
+    min-width: 110px;
+}
+
+.colAmount {
+    width: 15%;
+    min-width: 110px;
+    text-align: right;
+}
+
+.colAction {
+    width: 60px;
+}
+
+.table th {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    color: var(--color-text-secondary);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table td {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--fs-sm);
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.txDescription {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.txIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.positive {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.negative {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.tag {
+    background-color: var(--color-bg);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    color: var(--color-text-secondary);
+}
+
+.txAmount {
+    font-weight: var(--fw-bold);
+}
+
+.textPositive {
+    color: #10b981;
+}
+
+.textNegative {
+    color: #ef4444;
+}
+
+.statusBadge {
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+}
+
+.statusSuccess {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.statusWarning {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.monoText {
+    font-family: monospace;
+    background-color: var(--color-bg);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85em;
+    color: var(--color-text-primary);
+}
+
+.iconButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+    transition: all var(--duration-normal) var(--ease-in-out);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconButton:hover {
+    background-color: var(--color-brand-subtle);
+    color: var(--color-brand);
+}
+
+.paginationFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-6);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+}
+
+.paginationControls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.navBtn {
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    border: var(--card-border);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--duration-normal) var(--ease-in-out);
+}
+
+.navBtn:hover:not(:disabled) {
+    border-color: var(--color-text-secondary);
+    color: var(--color-text-primary);
+}
+
+.navBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pageIndicator {
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+}
+
+.textSecondary {
+    color: var(--color-text-secondary);
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+}
+
+.statCard {
+    background-color: var(--color-surface);
+    border: var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.statLabel {
+    font-size: var(--fs-xs);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.statValue {
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-text-primary);
+}
+
+/* ------------------------------------------------------------
+   Responsivité
+------------------------------------------------------------ */
+
+@media (max-width: 1024px) {
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .searchAndFilter {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 100%;
+    }
+
+    .searchContainer {
+        width: 100%;
+    }
+
+    .selectInput {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        gap: var(--space-5);
+    }
+    
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .paginationFooter {
+        flex-direction: column;
+        gap: var(--space-4);
+        align-items: flex-start;
+    }
+}

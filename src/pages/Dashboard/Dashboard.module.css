@@ -1,0 +1,268 @@
+/* ============================================================
+   Composant Dashboard - Mise en page et modules
+   ============================================================ */
+
+.dashboardWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    width: 100%;
+}
+
+/* ------------------------------------------------------------
+   Barre d'outils (Toolbar)
+------------------------------------------------------------ */
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    background-color: var(--color-surface);
+    padding: var(--space-4) var(--space-6);
+    border: var(--card-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.searchAndFilter {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex: 1;
+    max-width: 650px;
+}
+
+.searchInput {
+    flex: 1;
+    min-width: 220px;
+}
+
+.selectInput {
+    width: 200px;
+}
+
+.actionButtons {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------
+   Grille de statistiques (KPIs)
+------------------------------------------------------------ */
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-5);
+}
+
+.card {
+    background-color: var(--color-surface);
+    border: var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.iconWrapper {
+    background-color: var(--color-brand-subtle);
+    color: var(--color-brand);
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.changeRate {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    color: var(--color-brand);
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.cardLabel {
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+}
+
+.cardValue {
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-bold);
+    color: var(--color-text-primary);
+}
+
+/* ------------------------------------------------------------
+   Mise en page principale
+------------------------------------------------------------ */
+
+.layoutGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-6);
+    align-items: stretch;
+}
+
+.panel {
+    background-color: var(--color-surface);
+    border: var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.panelHeader {
+    margin-bottom: var(--space-6);
+}
+
+.panelTitle {
+    font-family: var(--font-serif);
+    font-size: var(--fs-h4);
+    color: var(--color-text-primary);
+}
+
+.panelSubtitle {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-sm);
+    margin-top: var(--space-1);
+}
+
+/* ------------------------------------------------------------
+   Graphique
+------------------------------------------------------------ */
+
+.chartContainer {
+    height: 280px;
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-5);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.chartBar {
+    flex: 1;
+    background-color: var(--color-brand-subtle);
+    color: var(--color-brand);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: var(--space-3);
+    font-weight: var(--fw-bold);
+    transition: background-color var(--transition-fast);
+}
+
+.chartBar:hover {
+    background-color: rgba(var(--color-brand-rgb), 0.2);
+}
+
+.barValue {
+    font-size: var(--fs-sm);
+}
+
+.barLabel {
+    font-size: var(--fs-xs);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-2);
+}
+
+/* ------------------------------------------------------------
+   Activités
+------------------------------------------------------------ */
+
+.activityList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.activityItem {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-brand);
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+.activityContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.activityText {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--color-text-primary);
+    line-height: var(--lh-snug);
+}
+
+.activityTime {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-xs);
+    color: var(--color-text-secondary);
+}
+
+/* ------------------------------------------------------------
+   Responsivité
+------------------------------------------------------------ */
+
+@media (max-width: 1024px) {
+    .layoutGrid {
+        grid-template-columns: 1fr;
+    }
+    .searchAndFilter {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 100%;
+        width: 100%;
+    }
+    .selectInput {
+        width: 100%;
+    }
+    .actionButtons {
+        width: 100%;
+    }
+}
